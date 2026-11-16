@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Ferragens G. Lemos</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Loja de ferragens e ferramentas na Rua da Madalena, Baixa de Lisboa. 25.000 artigos, venda ao balcão e online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Libre+Franklin:ital,wght@0,400..700;1,400&display=swap">
+<style>
+/* Kind: place (a hardware shop people walk into, with a small web shop).
+   World: a Baixa shopfront by day. Lime-washed wall, painted green woodwork, black lettering, a price list on paper.
+   Square corners, hairlines, one button style, one green band. Photographs carry the page. */
+:root{
+  --cal:#F3F2EE;        /* lime-wash ground */
+  --papel:#FBFAF7;      /* price-list paper */
+  --tinta:#1C1B19;      /* ink */
+  --cinza:#625F58;      /* secondary text, tinted toward the ink */
+  --verde:#233F2E;      /* shopfront green: the one brand band */
+  --verde-claro:#DCE5DD;/* text on green */
+  --linha:rgba(28,27,25,.16);
+  --linha-verde:rgba(220,229,221,.22);
+
+  --f-letreiro:"Archivo", "Arial Narrow", sans-serif;
+  --f-texto:"Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+
+  --gl:max(20px, env(safe-area-inset-left, 0px));
+  --gr:max(20px, env(safe-area-inset-right, 0px));
+  --maxw:1280px;
+  --out:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cal);color:var(--tinta);font-family:var(--f-texto);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--cal)}
+::selection{background:var(--verde);color:var(--cal)}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
+button{font:inherit;color:inherit;cursor:pointer}
+img{display:block;max-width:100%}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--tinta);outline-offset:3px}
+.verde :focus-visible{outline-color:var(--verde-claro)}
+h1,h2,h3{font-family:var(--f-letreiro);margin:0;line-height:.98;text-wrap:balance;font-variation-settings:"wdth" 78;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-left:var(--gl);padding-right:var(--gr)}
+.num{font-variant-numeric:tabular-nums}
+
+/* buttons: one style, inverted on green */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:var(--tinta);color:var(--cal);border:0;font-weight:600;font-size:16px;text-decoration:none;transition:transform .18s var(--out),background .18s}
+.btn:hover{transform:translateY(-2px);background:#000}
+.btn:active{transform:translateY(0) scale(.98)}
+.verde .btn{background:var(--cal);color:var(--verde)}
+.verde .btn:hover{background:#fff}
+.lnk{font-weight:600;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .3s var(--out);padding-bottom:2px}
+.lnk:hover{background-size:100% 1px}
+
+/* photo frames: square corners, slow zoom on hover */
+.foto{position:relative;overflow:hidden;background:#D8D5CC}
+.foto img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--out)}
+a.foto:hover img,.foto.zoom:hover img{transform:scale(1.03)}
+
+/* prototype notice */
+.prototipo{background:var(--tinta);color:var(--cal);font-size:13px;line-height:1.4}
+.prototipo .wrap{padding-block:9px}
+
+/* ---------- header ---------- */
+.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--cal);border-bottom:1px solid var(--linha)}
+.topo .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:68px}
+.marca{text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.marca b{font-family:var(--f-letreiro);font-weight:850;font-size:22px;letter-spacing:.06em;text-transform:uppercase;font-variation-settings:"wdth" 70}
+.marca span{font-size:12px;color:var(--cinza);margin-top:3px}
+.menu{display:flex;gap:30px;font-size:15px}
+.menu a{text-decoration:none}
+.menu a:hover{text-decoration:underline}
+.cesto{display:inline-flex;align-items:center;gap:10px;background:none;border:1px solid var(--tinta);min-height:44px;padding:0 16px;font-size:15px;font-weight:600}
+.cesto:hover{background:var(--tinta);color:var(--cal)}
+.cesto .n{font-variant-numeric:tabular-nums}
+
+/* ---------- hero ---------- */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,64px);align-items:end;padding-block:clamp(32px,5vw,64px)}
+.hero-texto{display:flex;flex-direction:column;gap:28px;padding-bottom:6px}
+.letreiro{font-family:var(--f-letreiro);font-weight:900;text-transform:uppercase;line-height:.84;letter-spacing:.005em;font-variation-settings:"wdth" 62;font-size:clamp(64px,8.2vw,124px)}
+.letreiro span{display:block;white-space:nowrap}
+.hero h1{font-family:var(--f-texto);font-size:clamp(20px,1.9vw,26px);font-weight:600;line-height:1.25;letter-spacing:0;font-variation-settings:normal;max-width:22ch}
+.hero .sub{color:var(--cinza);max-width:38ch}
+.hoje{display:flex;align-items:center;gap:10px;font-size:15px}
+.hoje i{width:9px;height:9px;border-radius:50%;background:#3E8A57;flex:none}
+.hoje i.fechado{background:#B5533C}
+.hero .foto{aspect-ratio:4/3.3;max-width:100%}
+[data-enter]{animation:entra 1.1s var(--out) both}
+[data-enter="2"]{animation-delay:.12s}
+@keyframes entra{from{opacity:0;transform:translateY(18px)}}
+@keyframes revela{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+.hero .foto{animation:revela 1.3s var(--out) .15s both}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(72px,9vw,128px)}
+.titulo{font-size:clamp(40px,5.2vw,72px);font-weight:800;margin-bottom:clamp(28px,3.5vw,48px)}
+.lede{font-size:19px;max-width:52ch;color:var(--cinza)}
+
+/* visit: the address set large */
+.visita{border-top:1px solid var(--linha)}
+.morada{font-family:var(--f-letreiro);font-weight:850;font-size:clamp(54px,9vw,138px);line-height:.88;text-transform:uppercase;font-variation-settings:"wdth" 64;letter-spacing:0;margin-bottom:clamp(36px,5vw,64px)}
+.morada a{text-decoration:none}
+.morada a:hover{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:.08em}
+.visita-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,3fr) minmax(0,5fr);gap:clamp(24px,4vw,56px);align-items:start}
+.horas{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.horas td{padding:12px 0;border-bottom:1px solid var(--linha)}
+.horas tr:first-child td{border-top:1px solid var(--linha)}
+.horas td:last-child{text-align:right}
+.horas tr.hoje-linha td{font-weight:700}
+.contacto{display:flex;flex-direction:column;gap:14px}
+.contacto .tel{font-family:var(--f-letreiro);font-size:34px;font-weight:700;font-variation-settings:"wdth" 80;user-select:all}
+.copiar{align-self:flex-start;background:none;border:1px solid var(--linha);min-height:40px;padding:0 14px;font-size:14px}
+.copiar:hover{border-color:var(--tinta)}
+.visita .foto{aspect-ratio:1;max-width:100%}
+
+/* goods */
+.artigos-topo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(32px,4vw,56px)}
+.artigos-topo .titulo{margin-bottom:0}
+.parede{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:12px}
+.parede .foto:nth-child(1){grid-row:1/3;aspect-ratio:auto;min-height:100%}
+.parede .foto{aspect-ratio:1}
+.seccoes{columns:3;column-gap:clamp(24px,4vw,56px);margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--linha);padding-top:24px;list-style:none;padding-left:0}
+.seccoes li{break-inside:avoid;padding:10px 0;border-bottom:1px solid var(--linha);display:flex;justify-content:space-between;gap:12px}
+.seccoes li span{color:var(--cinza);font-size:15px}
+
+/* price list */
+.precos{background:var(--papel);border-block:1px solid var(--linha)}
+.precos-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(28px,5vw,80px);align-items:start}
+.precos-intro{position:sticky;top:110px;display:flex;flex-direction:column;gap:20px}
+.precos-intro .titulo{margin-bottom:0}
+.filtro{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--tinta);align-self:flex-start}
+.filtro button{background:none;border:0;border-right:1px solid var(--tinta);min-height:44px;padding:0 16px;font-size:15px}
+.filtro button:last-child{border-right:0}
+.filtro button[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
+.lista{width:100%;border-collapse:collapse}
+.lista thead th{font-size:13px;font-weight:600;color:var(--cinza);text-align:left;padding:0 0 10px;border-bottom:1px solid var(--tinta)}
+.lista thead th.r{text-align:right}
+.lista td{padding:16px 0;border-bottom:1px solid var(--linha);vertical-align:middle}
+.lista .art b{display:block;font-weight:600}
+.lista .art span{font-size:14px;color:var(--cinza)}
+.lista .preco{font-family:var(--f-letreiro);font-weight:700;font-size:22px;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;font-variation-settings:"wdth" 85;padding-right:20px}
+.lista .acao{width:1%;white-space:nowrap;text-align:right}
+.juntar{background:none;border:1px solid var(--tinta);min-height:44px;padding:0 16px;font-size:14px;font-weight:600;transition:background .15s,color .15s}
+.juntar:hover{background:var(--tinta);color:var(--papel)}
+.juntar.ok{background:var(--verde);border-color:var(--verde);color:var(--cal)}
+.lista tr{transition:background .2s}
+.lista tbody tr:hover{background:rgba(28,27,25,.03)}
+.nota-precos{font-size:14px;color:var(--cinza);margin-top:18px}
+
+/* story */
+.casa-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(28px,5vw,80px);align-items:start}
+.casa-texto{display:flex;flex-direction:column;gap:22px;max-width:60ch}
+.casa-texto p{font-size:18px}
+.casa-texto p:first-of-type{font-size:22px;line-height:1.45}
+.casa-fotos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.casa-fotos .foto:first-child{grid-column:1/-1;aspect-ratio:3/2}
+.casa-fotos .foto{aspect-ratio:3/4}
+.clientes{display:flex;flex-wrap:wrap;gap:6px 22px;padding-top:20px;border-top:1px solid var(--linha);font-weight:600}
+.clientes span{color:var(--cinza);font-weight:400;width:100%;font-size:15px}
+
+/* ask: the green band */
+.verde{background:var(--verde);color:var(--verde-claro)}
+.verde .titulo{color:#fff}
+.pedido-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,80px);align-items:start}
+.pedido-grid .lede{color:var(--verde-claro)}
+.pedido-grid .foto{aspect-ratio:4/5;margin-top:36px;max-width:100%}
+.form{display:flex;flex-direction:column;gap:20px}
+.tabs{display:flex;border-bottom:1px solid var(--linha-verde)}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;min-height:48px;padding:0 4px;margin-right:28px;font-size:16px;color:var(--verde-claro);opacity:.75}
+.tabs button[aria-selected="true"]{opacity:1;color:#fff;border-bottom-color:#fff;font-weight:600}
+.campo{display:flex;flex-direction:column;gap:8px}
+.campo label{font-size:14px;font-weight:600;color:#fff}
+.campo input,.campo textarea{background:transparent;border:0;border-bottom:1px solid var(--linha-verde);color:#fff;font:inherit;font-size:17px;padding:10px 0;border-radius:0;resize:vertical}
+.campo input::placeholder,.campo textarea::placeholder{color:rgba(220,229,221,.5)}
+.campo input:focus,.campo textarea:focus{outline:none;border-bottom-color:#fff}
+.campo .erro{font-size:14px;color:#F2B8A6;min-height:0}
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ficheiro{position:relative;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;border:1px dashed var(--linha-verde);padding:16px;min-height:96px;transition:border-color .2s,background .2s}
+.ficheiro:hover,.ficheiro.sobre{border-color:#fff;background:rgba(255,255,255,.04)}
+.ficheiro input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.ficheiro .mini{width:64px;height:64px;background:rgba(255,255,255,.08);display:grid;place-items:center;overflow:hidden}
+.ficheiro .mini img{width:100%;height:100%;object-fit:cover}
+.ficheiro .mini svg{width:28px;height:28px}
+.ficheiro b{display:block;color:#fff;font-weight:600}
+.ficheiro small{font-size:14px}
+.enviado{display:flex;flex-direction:column;gap:14px;padding-block:20px}
+.enviado h3{font-size:40px;color:#fff;font-weight:800}
+
+/* footer */
+.rodape{border-top:1px solid var(--linha);font-size:15px}
+.rodape-grid{display:grid;grid-template-columns:minmax(0,5fr) repeat(3,minmax(0,2fr));gap:32px;padding-block:56px 40px}
+.rodape h4{font-size:14px;margin:0 0 12px}
+.rodape ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.rodape a{text-decoration:none}
+.rodape a:hover{text-decoration:underline}
+.rodape .marca b{font-size:30px}
+.legal{border-top:1px solid var(--linha);padding-block:18px 26px;font-size:13px;color:var(--cinza);display:flex;flex-direction:column;gap:6px}
+
+/* cart drawer */
+.veu{position:fixed;inset:0;background:rgba(28,27,25,.4);z-index:80;opacity:0;pointer-events:none;transition:opacity .3s}
+.veu.aberto{opacity:1;pointer-events:auto}
+.gaveta{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);z-index:90;background:var(--papel);transform:translateX(100%);transition:transform .45s var(--out);display:flex;flex-direction:column;padding:calc(20px + env(safe-area-inset-top,0px)) calc(24px + env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) 24px;box-shadow:-12px 0 40px rgba(28,27,25,.12)}
+.gaveta.aberto{transform:none}
+.gaveta header{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--tinta)}
+.gaveta h3{font-size:32px;font-weight:800}
+.fechar{background:none;border:1px solid var(--linha);width:44px;height:44px;display:grid;place-items:center}
+.fechar svg{width:16px;height:16px}
+.itens{flex:1;overflow:auto}
+.item{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--linha)}
+.item b{display:block;font-weight:600;font-size:15px}
+.qt{display:inline-flex;align-items:center;gap:12px;margin-top:6px;font-variant-numeric:tabular-nums;font-size:14px}
+.qt button{width:30px;height:30px;border:1px solid var(--linha);background:none}
+.item .p{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.vazio{padding:48px 0;color:var(--cinza)}
+.entrega{display:grid;gap:0;margin:16px 0 0;border:1px solid var(--linha)}
+.op{display:flex;gap:12px;padding:14px;cursor:pointer;border-bottom:1px solid var(--linha)}
+.op:last-child{border-bottom:0}
+.op input{accent-color:var(--tinta);margin-top:4px}
+.op b{display:block;font-size:15px}
+.op span{font-size:14px;color:var(--cinza)}
+.total{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0}
+.total b{font-family:var(--f-letreiro);font-size:30px;font-variation-settings:"wdth" 85;font-variant-numeric:tabular-nums}
+.gaveta .btn{width:100%}
+.aviso{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,16px);background:var(--tinta);color:var(--cal);padding:12px 18px;font-size:15px;opacity:0;transition:all .3s var(--out);z-index:100;pointer-events:none;max-width:calc(100% - 40px)}
+.aviso.ver{opacity:1;transform:translate(-50%,0)}
+
+/* phone bar */
+.barra{display:none}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+@media (max-width:1060px){
+  .menu{display:none}
+  .visita-grid{grid-template-columns:1fr 1fr}
+  .visita .foto{grid-column:1/-1;aspect-ratio:16/9}
+  .seccoes{columns:2}
+}
+@media (max-width:820px){
+  .hero .wrap{grid-template-columns:1fr;align-items:start}
+  .hero .foto{aspect-ratio:4/3}
+  .artigos-topo,.precos-grid,.casa-grid,.pedido-grid{grid-template-columns:1fr}
+  .precos-intro{position:static}
+  .parede{grid-template-columns:1fr 1fr}
+  .parede .foto:nth-child(1){grid-column:1/-1;grid-row:auto;aspect-ratio:4/3}
+  .pedido-grid .foto{display:none}
+  .rodape-grid{grid-template-columns:1fr 1fr}
+  .rodape-grid > div:first-child{grid-column:1/-1}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .marca span{display:none}
+  .visita-grid{grid-template-columns:1fr}
+  .seccoes{columns:1}
+  .dupla{grid-template-columns:1fr}
+  .lista thead{display:none}
+  .lista tr{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:14px 0;border-bottom:1px solid var(--linha)}
+  .lista td{padding:0;border:0}
+  .lista .art{grid-column:1/-1}
+  .lista .preco{text-align:left;padding:0;align-self:center}
+  .hero .btn,.verde .btn{width:100%}
+  .barra{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--cal);border-top:1px solid var(--tinta);padding:8px var(--gr) calc(8px + env(safe-area-inset-bottom,0px)) var(--gl);gap:8px}
+  .barra a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--tinta)}
+  .barra a:last-child{background:var(--tinta);color:var(--cal)}
+  .barra svg{width:18px;height:18px}
+  .rodape{padding-bottom:72px}
+  .aviso{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
+</style>
+</head>
+<body>
+<div class="prototipo" role="note"><div class="wrap">Protótipo de design apresentado à Ferragens G. Lemos. Não é o site oficial da loja: preços, fotografias e encomendas são ilustrativos.</div></div>
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio"><b>Ferragens G. Lemos</b><span>Rua da Madalena, Lisboa</span></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#artigos">Artigos</a>
+      <a href="#precos">Loja online</a>
+      <a href="#pedido">Pedir um artigo</a>
+      <a href="#casa">A loja</a>
+      <a href="#visita">Horário</a>
+    </nav>
+    <button class="cesto" id="abrirCesto" aria-label="Abrir cesto de compras">Cesto <span class="n" id="nCesto">0</span></button>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero" style="padding-block:0">
+    <div class="wrap">
+      <div class="hero-texto">
+        <p class="letreiro" aria-hidden="true" data-enter><span>Ferragens</span><span>G. Lemos</span></p>
+        <h1 data-enter="2">Loja de ferragens e ferramentas na Rua da Madalena, Lisboa</h1>
+        <p class="sub" data-enter="2">Mais de 25.000 artigos, da dobradiça ao escadote. Quatro pessoas ao balcão para ajudar a encontrar a peça certa.</p>
+        <p class="hoje" data-enter="2"><i id="ponto"></i><span id="estado">Hoje aberta das 11:00 às 19:00</span></p>
+        <div data-enter="2"><a class="btn" href="#pedido">Enviar foto da peça</a></div>
+      </div>
+      <div class="foto zoom"><img src="img/hero.jpg" alt="Interior de uma loja de ferragens com prateleiras cheias de artigos" width="1600" height="1200"></div>
+    </div>
+  </section>
+
+  <section class="visita" id="visita">
+    <div class="wrap">
+      <h2 class="morada"><a href="https://maps.app.goo.gl/6K7SYN13ajUSpPjx5" target="_blank" rel="noopener">Rua da Madalena<br>101 a 107</a></h2>
+      <div class="visita-grid">
+        <div>
+          <table class="horas" id="horas" aria-label="Horário">
+            <tr data-d="1"><td>Segunda a sexta</td><td>11:00 – 19:00</td></tr>
+            <tr data-d="6"><td>Sábado</td><td>09:00 – 13:00</td></tr>
+            <tr data-d="0"><td>Domingo</td><td>Fechado</td></tr>
+          </table>
+        </div>
+        <div class="contacto">
+          <span class="tel">21 886 6319</span>
+          <button class="copiar" id="copiar">Copiar número</button>
+          <p style="color:var(--cinza);font-size:15px">1100-319 Lisboa. Entre a Rua da Conceição e o Largo da Madalena, a cinco minutos da Praça do Comércio.</p>
+          <a class="lnk" href="https://maps.app.goo.gl/6K7SYN13ajUSpPjx5" target="_blank" rel="noopener">Ver como chegar</a>
+        </div>
+        <div class="foto zoom"><img src="img/rua.jpg" alt="Elétrico na Rua dos Fanqueiros, paralela à Rua da Madalena" loading="lazy" width="1200" height="1200"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="artigos" style="padding-top:0">
+    <div class="wrap">
+      <div class="artigos-topo">
+        <h2 class="titulo">O que temos na loja</h2>
+        <p class="lede">Catorze secções, do prego ao cofre. O que não estiver na prateleira vem do nosso armazém, que vende por grosso desde 1948.</p>
+      </div>
+      <div class="parede">
+        <div class="foto zoom"><img src="img/parede-1.jpg" alt="Parede de ferramentas manuais penduradas" loading="lazy"></div>
+        <div class="foto zoom"><img src="img/parede-2.jpg" alt="Prateleiras com caixas de parafusos e ferragens" loading="lazy"></div>
+        <div class="foto zoom"><img src="img/parede-3.jpg" alt="Cadeado de latão com chave" loading="lazy"></div>
+        <div class="foto zoom"><img src="img/parede-4.jpg" alt="Artigos de casa e drogaria em prateleiras" loading="lazy"></div>
+        <div class="foto zoom"><img src="img/parede-5.jpg" alt="Cataplana de cobre" loading="lazy"></div>
+      </div>
+      <ul class="seccoes">
+        <li>Ferramentas manuais <span>Bahco, Urko, Samurai</span></li>
+        <li>Ferramentas elétricas</li>
+        <li>Ferragens e dobradiças</li>
+        <li>Aquecimento</li>
+        <li>Arames e redes</li>
+        <li>Artigos a gás</li>
+        <li>Canalização <span>e desentupidores</span></li>
+        <li>Cofres e chaveiros</li>
+        <li>Escadas e escadotes</li>
+        <li>Material elétrico</li>
+        <li>Artigos de rega <span>Matabi</span></li>
+        <li>Proteção laboral</li>
+        <li>Vinicultura</li>
+        <li>Cobre e latão</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="precos" id="precos">
+    <div class="wrap precos-grid">
+      <div class="precos-intro">
+        <h2 class="titulo">Comprar online</h2>
+        <p class="lede">Os artigos que mais saem ao balcão. Levante na loja sem custos ou receba em casa.</p>
+        <div class="filtro" role="group" aria-label="Filtrar lista">
+          <button aria-pressed="true" data-f="todos">Todos</button>
+          <button aria-pressed="false" data-f="ferramentas">Ferramentas</button>
+          <button aria-pressed="false" data-f="ferragens">Ferragens</button>
+          <button aria-pressed="false" data-f="casa">Casa</button>
+        </div>
+      </div>
+      <div>
+        <table class="lista" aria-label="Lista de preços">
+          <thead><tr><th>Artigo</th><th class="r" style="padding-right:20px">Preço</th><th><span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Ação</span></th></tr></thead>
+          <tbody id="lista"></tbody>
+        </table>
+        <p class="nota-precos">Preços com IVA. Não encontra o que procura? <a class="lnk" href="#pedido">Envie-nos uma foto</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="casa">
+    <div class="wrap casa-grid">
+      <div class="casa-texto">
+        <h2 class="titulo" style="margin-bottom:8px">A loja e o armazém</h2>
+        <p>A casa começou em 1948 como armazém de ferragens e ferramentas, a Viúva C. Ferreira Pires, Lda., que ainda hoje importa e vende por grosso.</p>
+        <p>A loja ao público abriu em 1970 nos números 101 a 103 da Rua da Madalena. Nos anos 80 ocupou também os números 105 a 107, e em 1982 passou a chamar-se Ferragens G. Lemos.</p>
+        <p>Muitas lojas de ferragens fecharam nesta zona da Baixa. Esta continua aberta e faz parte do programa Lojas com História da Câmara Municipal de Lisboa.</p>
+        <div class="clientes">
+          <span>Também fornecemos instituições e empresas, entre elas:</span>
+          Câmara Municipal de Lisboa · Guarda Nacional Republicana · Santa Casa da Misericórdia
+        </div>
+      </div>
+      <div class="casa-fotos">
+        <div class="foto zoom"><img src="img/casa-1.jpg" alt="Berbequim manual antigo pendurado na parede" loading="lazy"></div>
+        <div class="foto zoom"><img src="img/casa-2.jpg" alt="Serrote de arco antigo pendurado na parede" loading="lazy"></div>
+        <div class="foto zoom"><img src="img/casa-3.jpg" alt="Alguidares e bacias de plástico empilhados" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="verde" id="pedido">
+    <div class="wrap pedido-grid">
+      <div>
+        <h2 class="titulo">Pedir um artigo pela foto</h2>
+        <p class="lede">Uma peça partida, um parafuso que não sabe o nome, uma dobradiça antiga. Envie a foto e diga quantas precisa. Dizemos se temos e quanto custa, e guardamos o artigo para levantar.</p>
+        <div class="foto"><img src="img/pedido.jpg" alt="Corredor de uma drogaria com prateleiras de artigos" loading="lazy"></div>
+      </div>
+      <div>
+        <div class="tabs" role="tablist" aria-label="Tipo de pedido">
+          <button role="tab" aria-selected="true" aria-controls="fPart" id="tPart">Particular</button>
+          <button role="tab" aria-selected="false" aria-controls="fEmp" id="tEmp">Empresa ou instituição</button>
+        </div>
+        <form class="form" id="fPart" role="tabpanel" aria-labelledby="tPart" novalidate style="padding-top:28px">
+          <label class="ficheiro" id="zona">
+            <input type="file" id="foto" accept="image/*">
+            <span class="mini" id="mini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h4l2-3h6l2 3h4v13H3z"/><circle cx="12" cy="13" r="4"/></svg></span>
+            <span><b id="fotoNome">Adicionar fotografia</b><small>Toque para tirar ou escolher uma foto da peça</small></span>
+          </label>
+          <div class="campo"><label for="oque">O que procura</label><textarea id="oque" rows="2" placeholder="Dobradiça igual a esta, para porta de armário. Preciso de 4."></textarea><span class="erro" id="erroOque"></span></div>
+          <div class="dupla">
+            <div class="campo"><label for="nome">Nome</label><input id="nome" autocomplete="name"></div>
+            <div class="campo"><label for="ct">Telemóvel ou e-mail</label><input id="ct" autocomplete="tel"><span class="erro" id="erroCt"></span></div>
+          </div>
+          <div><button class="btn" type="submit">Enviar foto da peça</button></div>
+        </form>
+        <form class="form" id="fEmp" role="tabpanel" aria-labelledby="tEmp" hidden novalidate style="padding-top:28px">
+          <div class="dupla">
+            <div class="campo"><label for="emp">Empresa</label><input id="emp" autocomplete="organization"></div>
+            <div class="campo"><label for="nif">NIF</label><input id="nif" inputmode="numeric"></div>
+          </div>
+          <div class="campo"><label for="mat">Lista de material</label><textarea id="mat" rows="4" placeholder="Uma linha por artigo, com a quantidade"></textarea><span class="erro" id="erroMat"></span></div>
+          <div class="campo"><label for="ct2">E-mail para o orçamento</label><input id="ct2" type="email" autocomplete="email"><span class="erro" id="erroCt2"></span></div>
+          <div><button class="btn" type="submit">Pedir orçamento</button></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <div class="rodape-grid">
+      <div><a class="marca" href="#inicio"><b>Ferragens G. Lemos</b></a></div>
+      <div><h4>Loja</h4><ul><li><a href="#precos">Comprar online</a></li><li><a href="#artigos">Secções</a></li><li><a href="#pedido">Pedir pela foto</a></li></ul></div>
+      <div><h4>Visitar</h4><ul><li>Rua da Madalena 101–107</li><li>1100-319 Lisboa</li><li><a href="https://www.facebook.com/ferragens.g.lemos" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+      <div><h4>Armazém</h4><ul><li>Viúva C. Ferreira Pires, Lda.</li><li><a href="https://www.viuva.com/" target="_blank" rel="noopener">viuva.com</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Ferragens G. Lemos, Lda.</span>
+      <span id="creditos">Fotografias via Wikimedia Commons: amanderson2 (domínio público); Threeohsix, Notafly, Shillings1005, Lichinga (CC BY-SA 4.0); DiogoBaptista, Syced (CC0).</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="barra" aria-label="Ações rápidas">
+  <a href="https://maps.app.goo.gl/6K7SYN13ajUSpPjx5" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Como chegar</a>
+  <a href="#pedido"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h4l2-3h6l2 3h4v13H3z"/><circle cx="12" cy="13" r="4"/></svg>Enviar foto</a>
+</nav>
+
+<div class="veu" id="veu"></div>
+<aside class="gaveta" id="gaveta" aria-label="Cesto de compras" aria-hidden="true">
+  <header><h3>Cesto</h3><button class="fechar" id="fecharCesto" aria-label="Fechar cesto"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3l10 10M13 3 3 13"/></svg></button></header>
+  <div class="itens" id="itens"></div>
+  <div id="checkout">
+    <div class="entrega">
+      <label class="op"><input type="radio" name="ent" value="0" id="entLoja" checked><span><b>Levantar na loja</b><span>Sem custos. Avisamos quando estiver pronto.</span></span></label>
+      <label class="op"><input type="radio" name="ent" value="4.9" id="entCasa"><span><b>Entrega em Lisboa · 4,90 €</b><span>Combinamos o dia por telefone.</span></span></label>
+    </div>
+    <div class="total"><span>Total</span><b id="total">0,00 €</b></div>
+    <button class="btn" id="pagar">Finalizar encomenda</button>
+  </div>
+</aside>
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s);
+const eur=n=>n.toFixed(2).replace(".",",")+" €";
+
+/* price list (illustrative prices for the prototype) */
+const L=[
+  {id:"a1",n:"Serrote de poda 240 mm",m:"Samurai",p:34.90,f:"ferramentas"},
+  {id:"a2",n:"Martelo de carpinteiro 450 g",m:"Bahco",p:21.50,f:"ferramentas"},
+  {id:"a3",n:"Alicate universal isolado",m:"Bahco",p:18.90,f:"ferramentas"},
+  {id:"a4",n:"Fita métrica 5 m",m:"Urko",p:8.90,f:"ferramentas"},
+  {id:"a5",n:"Cadeado de latão 40 mm, 3 chaves",m:"Tayg",p:12.40,f:"ferragens"},
+  {id:"a6",n:"Dobradiça inox 100 mm, par",m:"Urko",p:7.80,f:"ferragens"},
+  {id:"a7",n:"Cópia de chave simples",m:"Feita ao balcão",p:3.50,f:"ferragens"},
+  {id:"a8",n:"Sonda desentupidora 5 m",m:"Canalização",p:15.90,f:"casa"},
+  {id:"a9",n:"Escadote de alumínio, 5 degraus",m:"Whale",p:69.00,f:"casa"},
+  {id:"a10",n:"Pulverizador de jardim 5 L",m:"Matabi",p:27.50,f:"casa"},
+  {id:"a11",n:"Cataplana de cobre 28 cm",m:"Cobre e latão",p:79.00,f:"casa"},
+];
+const byId=Object.fromEntries(L.map(a=>[a.id,a]));
+function lista(f){
+  $("#lista").innerHTML=L.filter(a=>f==="todos"||a.f===f).map(a=>`
+    <tr><td class="art"><b>${a.n}</b><span>${a.m}</span></td>
+    <td class="preco" data-assumed>${eur(a.p)}</td>
+    <td class="acao"><button class="juntar" data-add="${a.id}">Juntar ao cesto</button></td></tr>`).join("");
+}
+lista("todos");
+document.querySelector(".filtro").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  document.querySelectorAll(".filtro button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  lista(b.dataset.f);
+});
+
+/* cart */
+const cesto={};
+function aviso(t){const a=$("#aviso");a.textContent=t;a.classList.add("ver");clearTimeout(aviso.t);aviso.t=setTimeout(()=>a.classList.remove("ver"),2200)}
+function desenha(){
+  const ids=Object.keys(cesto), n=ids.reduce((s,i)=>s+cesto[i],0);
+  $("#nCesto").textContent=n;
+  if(!ids.length){$("#itens").innerHTML=`<p class="vazio">O cesto está vazio. Escolha artigos na lista de preços.</p>`;$("#checkout").hidden=true;return}
+  $("#checkout").hidden=false;
+  $("#itens").innerHTML=ids.map(i=>{const a=byId[i];return `<div class="item"><div><b>${a.n}</b><span class="qt"><button data-menos="${i}" aria-label="Menos uma unidade">−</button>${cesto[i]}<button data-mais="${i}" aria-label="Mais uma unidade">+</button></span></div><span class="p">${eur(a.p*cesto[i])}</span></div>`}).join("");
+  const sub=ids.reduce((s,i)=>s+byId[i].p*cesto[i],0);
+  $("#total").textContent=eur(sub+parseFloat(document.querySelector('input[name="ent"]:checked').value));
+}
+document.addEventListener("click",e=>{
+  const a=e.target.closest("[data-add]");
+  if(a){const i=a.dataset.add;cesto[i]=(cesto[i]||0)+1;desenha();a.classList.add("ok");a.textContent="No cesto";setTimeout(()=>{a.classList.remove("ok");a.textContent="Juntar ao cesto"},1500);aviso(byId[i].n+" juntado ao cesto");return}
+  const m=e.target.closest("[data-mais]"); if(m){cesto[m.dataset.mais]++;desenha();return}
+  const l=e.target.closest("[data-menos]"); if(l){const i=l.dataset.menos;if(--cesto[i]<=0)delete cesto[i];desenha()}
+});
+document.querySelectorAll('input[name="ent"]').forEach(r=>r.addEventListener("change",desenha));
+const abre=()=>{$("#gaveta").classList.add("aberto");$("#veu").classList.add("aberto");$("#gaveta").setAttribute("aria-hidden","false");$("#fecharCesto").focus()};
+const fecha=()=>{$("#gaveta").classList.remove("aberto");$("#veu").classList.remove("aberto");$("#gaveta").setAttribute("aria-hidden","true")};
+$("#abrirCesto").onclick=abre;$("#fecharCesto").onclick=fecha;$("#veu").onclick=fecha;
+addEventListener("keydown",e=>{if(e.key==="Escape")fecha()});
+$("#pagar").onclick=()=>{
+  const loja=$("#entLoja").checked;
+  $("#itens").innerHTML=`<p class="vazio">Esta é uma versão de demonstração e a encomenda não foi registada. Na loja real, ${loja?"recebia um SMS quando o artigo estivesse pronto a levantar":"seguia para o pagamento por MB WAY, Multibanco ou cartão"}.</p>`;
+  for(const k in cesto) delete cesto[k]; $("#checkout").hidden=true; $("#nCesto").textContent="0";
+};
+desenha();
+
+/* tabs */
+const tabs=[["tPart","fPart"],["tEmp","fEmp"]];
+tabs.forEach(([t,f])=>$("#"+t).addEventListener("click",()=>{tabs.forEach(([t2,f2])=>{$("#"+t2).setAttribute("aria-selected",t2===t);$("#"+f2).hidden=t2!==t})}));
+
+/* photo field */
+const zona=$("#zona"), foto=$("#foto");
+["dragenter","dragover"].forEach(ev=>zona.addEventListener(ev,e=>{e.preventDefault();zona.classList.add("sobre")}));
+["dragleave","drop"].forEach(ev=>zona.addEventListener(ev,()=>zona.classList.remove("sobre")));
+zona.addEventListener("drop",e=>{e.preventDefault();if(e.dataTransfer.files[0])mostra(e.dataTransfer.files[0])});
+foto.addEventListener("change",()=>{if(foto.files[0])mostra(foto.files[0])});
+function mostra(f){
+  if(!f.type.startsWith("image/")){aviso("O ficheiro tem de ser uma imagem (JPG ou PNG).");return}
+  const r=new FileReader();r.onload=()=>{$("#mini").innerHTML=`<img src="${r.result}" alt="Foto escolhida">`;$("#fotoNome").textContent=f.name};r.readAsDataURL(f);
+}
+function erro(id,msg){$("#"+id).textContent=msg;return !msg}
+$("#fPart").addEventListener("submit",e=>{
+  e.preventDefault();
+  const ok1=erro("erroOque",($("#oque").value.trim()||foto.files.length)?"":"Escreva o que procura ou junte uma foto.");
+  const ok2=erro("erroCt",$("#ct").value.trim()?"":"Precisamos de um contacto para responder.");
+  if(!ok1||!ok2) return;
+  $("#fPart").innerHTML=`<div class="enviado"><h3>Pedido pronto a enviar</h3><p>Esta é uma versão de demonstração e nada foi enviado. Na loja real, o pedido chegava ao balcão com a sua foto e a resposta seguia para ${$("#ct").value.replace(/[<>&"]/g,"")}.</p></div>`;
+});
+$("#fEmp").addEventListener("submit",e=>{
+  e.preventDefault();
+  const ok1=erro("erroMat",$("#mat").value.trim()?"":"Indique pelo menos um artigo e a quantidade.");
+  const ok2=erro("erroCt2",/\S+@\S+\.\S+/.test($("#ct2").value)?"":"Escreva um e-mail válido, por exemplo nome@empresa.pt.");
+  if(!ok1||!ok2) return;
+  $("#fEmp").innerHTML=`<div class="enviado"><h3>Pedido de orçamento pronto</h3><p>Esta é uma versão de demonstração e nada foi enviado. Na loja real, o orçamento seguia para ${$("#ct2").value.replace(/[<>&"]/g,"")}.</p></div>`;
+});
+
+/* open now, from the published hours, Lisbon time */
+function agora(){
+  const pp=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Lisbon",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
+  const g=t=>pp.find(p=>p.type===t).value;
+  return {d:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[g("weekday")],m:(parseInt(g("hour"),10)%24)*60+parseInt(g("minute"),10)};
+}
+const H={0:null,1:[660,1140],2:[660,1140],3:[660,1140],4:[660,1140],5:[660,1140],6:[540,780]};
+const hm=m=>String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0");
+const dias=["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
+function estado(){
+  const {d,m}=agora(), h=H[d]; let txt, aberto=false;
+  if(h&&m>=h[0]&&m<h[1]){aberto=true;txt=`Aberta agora, até às ${hm(h[1])}`}
+  else if(h&&m<h[0]){txt=`Abre hoje às ${hm(h[0])}`}
+  else{let k=(d+1)%7,i=1;while(!H[k]){k=(k+1)%7;i++}txt=`Fechada. Abre ${i===1?"amanhã":dias[k]} às ${hm(H[k][0])}`}
+  $("#estado").textContent=txt; $("#ponto").classList.toggle("fechado",!aberto);
+  document.querySelectorAll("#horas tr").forEach(tr=>{const x=+tr.dataset.d;tr.classList.toggle("hoje-linha",x===1?(d>=1&&d<=5):x===d)});
+}
+estado(); setInterval(estado,60000);
+
+$("#copiar").onclick=async()=>{
+  try{await navigator.clipboard.writeText("+351 218 866 319");aviso("Número copiado")}
+  catch(_){const r=document.createRange();r.selectNodeContents($(".tel"));const s=getSelection();s.removeAllRanges();s.addRange(r);aviso("Número selecionado. Copie com Cmd+C ou Ctrl+C.")}
+};
+})();
+</script>
+</body>
+</html>
